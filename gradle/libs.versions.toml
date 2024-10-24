@@ -38,4 +38,6 @@ rx-kotlin = {group = "io.reactivex.rxjava2", name="rxkotlin", version.ref = "rx-
 android-application = { id = "com.android.application", version.ref = "agp" }
 jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 

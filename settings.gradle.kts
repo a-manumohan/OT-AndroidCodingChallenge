@@ -11,6 +11,9 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -20,4 +23,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "AndroidOTChallenge"
-include ':app'
+include(":app")
+include(":core")
+include(":booklist")
