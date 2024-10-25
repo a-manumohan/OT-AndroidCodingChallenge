@@ -8,12 +8,21 @@ plugins {
 
 android {
     namespace = "com.example.otchallenge"
-    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    compileSdk =
+        libs.versions.compileSdkVersion
+            .get()
+            .toInt()
 
     defaultConfig {
         applicationId = "com.example.otchallenge"
-        minSdk = libs.versions.minSdkVersion.get().toInt()
-        targetSdk = libs.versions.targetSdkVersion.get().toInt()
+        minSdk =
+            libs.versions.minSdkVersion
+                .get()
+                .toInt()
+        targetSdk =
+            libs.versions.targetSdkVersion
+                .get()
+                .toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -24,7 +33,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
             )
         }
     }
@@ -50,11 +60,11 @@ dependencies {
     implementation(libs.dagger)
     kapt(libs.dagger.compiler)
 
-    //retrofit
+    // retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.rx.adapter)
 
-    //glide
+    // glide
     implementation(libs.glide)
 
     testImplementation(libs.junit)

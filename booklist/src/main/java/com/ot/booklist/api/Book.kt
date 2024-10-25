@@ -8,5 +8,5 @@ data class Book(
     val title: String,
     @Json(name = "book_image")
     val image: String,
-    val description: String
+    val description: String,
 )

@@ -8,10 +8,12 @@ import com.example.otchallenge.MainActivity
 import com.example.otchallenge.MyApplication
 
 class OtAppComponentFactory : AppComponentFactory() {
-
     private lateinit var application: MyApplication
 
-    override fun instantiateApplicationCompat(cl: ClassLoader, className: String): Application {
+    override fun instantiateApplicationCompat(
+        cl: ClassLoader,
+        className: String,
+    ): Application {
         val application = super.instantiateApplicationCompat(cl, className)
         this.application = application as MyApplication
         return application
@@ -20,8 +22,6 @@ class OtAppComponentFactory : AppComponentFactory() {
     override fun instantiateActivityCompat(
         cl: ClassLoader,
         className: String,
-        intent: Intent?
-    ): Activity {
-        return MainActivity(application.appComponent.fragmentFactory())
-    }
+        intent: Intent?,
+    ): Activity = MainActivity(application.appComponent.fragmentFactory())
 }

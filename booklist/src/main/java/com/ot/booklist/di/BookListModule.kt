@@ -11,10 +11,12 @@ import retrofit2.create
 interface BookListModule {
     companion object {
         @Provides
-        fun retrofit(): Retrofit = Retrofit.Builder()
-            .addConverterFactory(
-                MoshiConverterFactory.create()
-            ).build()
+        fun retrofit(): Retrofit =
+            Retrofit
+                .Builder()
+                .addConverterFactory(
+                    MoshiConverterFactory.create(),
+                ).build()
 
         @Provides
         fun bookListApi(retrofit: Retrofit): BookListApi = retrofit.create()

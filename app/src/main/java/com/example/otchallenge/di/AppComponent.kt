@@ -13,5 +13,5 @@ interface AppComponent {
 
     fun bookListComponent(): BookListComponent
 
-    fun fragmentFactory() : FragmentFactory
+    fun fragmentFactory(): FragmentFactory
 }

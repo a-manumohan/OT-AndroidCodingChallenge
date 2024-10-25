@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -7,10 +5,16 @@ plugins {
 }
 android {
     namespace = "com.ot.core"
-    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    compileSdk =
+        libs.versions.compileSdkVersion
+            .get()
+            .toInt()
 
     defaultConfig {
-        minSdk = libs.versions.minSdkVersion.get().toInt()
+        minSdk =
+            libs.versions.minSdkVersion
+                .get()
+                .toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -20,8 +24,8 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
-                    "proguard-rules.pro"
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro",
             )
         }
     }

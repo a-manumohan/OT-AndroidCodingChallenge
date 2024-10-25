@@ -6,10 +6,16 @@ plugins {
 
 android {
     namespace = "com.ot.booklist"
-    compileSdk = libs.versions.compileSdkVersion.get().toInt()
+    compileSdk =
+        libs.versions.compileSdkVersion
+            .get()
+            .toInt()
 
     defaultConfig {
-        minSdk = libs.versions.minSdkVersion.get().toInt()
+        minSdk =
+            libs.versions.minSdkVersion
+                .get()
+                .toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -20,7 +26,7 @@ android {
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
         }
     }
@@ -38,7 +44,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 
-    //retrofit
+    // retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi.converter)
 

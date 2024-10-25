@@ -9,9 +9,8 @@ import androidx.fragment.app.FragmentFactory
 import com.ot.booklist.BookListFragment
 
 class MainActivity(
-    private val fragmentFactory: FragmentFactory
+    private val fragmentFactory: FragmentFactory,
 ) : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         supportFragmentManager.fragmentFactory = fragmentFactory
         super.onCreate(savedInstanceState)
@@ -26,11 +25,13 @@ class MainActivity(
     }
 
     private fun showBookListFragment() {
-        val fragment = supportFragmentManager.fragmentFactory.instantiate(
-            classLoader,
-            BookListFragment::class.java.name
-        )
-        supportFragmentManager.beginTransaction()
+        val fragment =
+            supportFragmentManager.fragmentFactory.instantiate(
+                classLoader,
+                BookListFragment::class.java.name,
+            )
+        supportFragmentManager
+            .beginTransaction()
             .replace(R.id.fragment_container, fragment, "BOOK_LIST")
             .commit()
     }
