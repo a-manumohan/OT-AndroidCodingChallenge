@@ -1,4 +1,4 @@
-package com.ot.core
+package com.ot.core.di
 
 import androidx.fragment.app.Fragment
 import dagger.MapKey

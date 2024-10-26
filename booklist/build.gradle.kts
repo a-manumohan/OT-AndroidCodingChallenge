@@ -44,12 +44,19 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 
+
+    //moshi
+    implementation(libs.moshi)
+    kapt(libs.moshi.codegen)
+
     // retrofit
     implementation(libs.retrofit)
     implementation(libs.retrofit.moshi.converter)
 
     // dagger
     implementation(libs.dagger)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     kapt(libs.dagger.compiler)
 
     implementation(libs.material)

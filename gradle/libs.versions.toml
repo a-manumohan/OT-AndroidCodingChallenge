@@ -15,10 +15,10 @@ constraintlayout = "2.1.4"
 dagger = "2.52"
 retrofit = "2.11.0"
 glide = "4.16.0"
-rx-android = "2.1.1"
-rx-java = "2.2.21"
-rx-kotlin = "2.4.0"
 spotless = "6.25.0"
+navigationFragmentKtx = "2.8.3"
+navigationUiKtx = "2.8.3"
+moshi = "1.15.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -35,9 +35,10 @@ retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = 
 retrofit-rx-adapter = { group = "com.squareup.retrofit2", name = "adapter-rxjava2", version.ref = "retrofit" }
 retrofit-moshi-converter = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
 glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
-rx-java = { group = "io.reactivex.rxjava2", name = "rxjava", version.ref = "rx-java" }
-rx-android = { group = "io.reactivex.rxjava2", name = "rxandroid", version.ref = "rx-android" }
-rx-kotlin = { group = "io.reactivex.rxjava2", name = "rxkotlin", version.ref = "rx-kotlin" }
+androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
+androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -46,5 +47,4 @@ kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlin" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 android-library = { id = "com.android.library", version.ref = "agp" }
 spotless = { id = "com.diffplug.spotless", version.ref = "spotless" }
-
 

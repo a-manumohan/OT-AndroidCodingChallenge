@@ -22,6 +22,7 @@ subprojects {
             ktlint(ktlintVersion)
             toggleOffOn() // Allow toggling Spotless off and on within code files using comments
             trimTrailingWhitespace()
+            endWithNewline()
         }
 
         kotlinGradle {
