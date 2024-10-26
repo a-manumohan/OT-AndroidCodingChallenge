@@ -15,9 +15,10 @@ interface AppModule {
         fun baseUrl(): String = BuildConfig.BASE_URL
 
         @Provides
-        fun dispatchers() = AppDispatchers(
-            work = Dispatchers.IO,
-            result = Dispatchers.Main
-        )
+        fun dispatchers() =
+            AppDispatchers(
+                work = Dispatchers.IO,
+                result = Dispatchers.Main,
+            )
     }
 }

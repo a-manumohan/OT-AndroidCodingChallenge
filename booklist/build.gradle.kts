@@ -44,8 +44,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
 
-
-    //moshi
+    // moshi
     implementation(libs.moshi)
     kapt(libs.moshi.codegen)
 

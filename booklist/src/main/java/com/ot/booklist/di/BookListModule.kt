@@ -18,7 +18,9 @@ interface BookListModule {
 
     companion object {
         @Provides
-        fun retrofit(@BaseUrl baseUrl: String): Retrofit =
+        fun retrofit(
+            @BaseUrl baseUrl: String,
+        ): Retrofit =
             Retrofit
                 .Builder()
                 .baseUrl(baseUrl)

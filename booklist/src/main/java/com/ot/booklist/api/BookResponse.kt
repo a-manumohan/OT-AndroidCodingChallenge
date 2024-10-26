@@ -4,10 +4,10 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class BookResponse(
-    val results: Results
+    val results: Results,
 ) {
     @JsonClass(generateAdapter = true)
     data class Results(
-        val books: List<Book>
+        val books: List<Book>,
     )
 }

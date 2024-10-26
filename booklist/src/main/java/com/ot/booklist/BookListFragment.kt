@@ -8,9 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.ot.booklist.di.BookListComponentProvider
-import com.ot.core.AppDispatchers
 import com.ot.core.getString
-import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,7 +16,6 @@ import javax.inject.Inject
 class BookListFragment : Fragment() {
     @Inject
     lateinit var bookListPresenter: BookListPresenter
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +32,8 @@ class BookListFragment : Fragment() {
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        (view.context.applicationContext as BookListComponentProvider).bookListComponent()
+        (view.context.applicationContext as BookListComponentProvider)
+            .bookListComponent()
             .inject(this)
 
         renderBooks()
@@ -51,12 +49,10 @@ class BookListFragment : Fragment() {
                     }
 
                     is BookListState.Error -> {
-
                         Log.e("Manu", requireContext().getString(it.message))
                     }
 
                     BookListState.Loading -> {
-
                         Log.e("Manu", "Loading")
                     }
                 }
