@@ -2,4 +2,6 @@
     <string name="error_network">Please check your internet connection and try again</string>
     <string name="error_server">Something wrong with the server. Please try again later</string>
     <string name="error_generic">Something went wrong. Be assured, we will be right back!</string>
+
+    <string name="content_description_book_image">Image of book titled, %s</string>
 </resources>

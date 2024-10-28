@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.cardview.widget.CardView">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/padding_small"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bookImage"
+            android:layout_width="@dimen/size_book_image"
+            android:layout_height="@dimen/size_book_image"
+            android:contentDescription="@string/content_description_book_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bookTitle"
+            style="@style/MaterialAlertDialog.Material3.Title.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_normal"
+            android:textSize="@dimen/text_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/bookImage"
+            app:layout_constraintTop_toTopOf="@id/bookImage"
+            tools:text="Title" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/bookDescription"
+            style="@style/MaterialAlertDialog.Material3.Body.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintEnd_toEndOf="@id/bookTitle"
+            app:layout_constraintStart_toStartOf="@id/bookTitle"
+            app:layout_constraintTop_toBottomOf="@id/bookTitle"
+            tools:text="Description" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</merge>

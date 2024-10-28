@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ot.booklist.databinding.FragmentBookListBinding
 import com.ot.booklist.di.BookListComponentProvider
+import com.ot.booklist.ui.BooksAdapter
 import com.ot.core.getString
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -17,15 +20,19 @@ class BookListFragment : Fragment() {
     @Inject
     lateinit var bookListPresenter: BookListPresenter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private var _binding: FragmentBookListBinding? = null
+    private val binding get() = _binding!!
+
+    private val adapter = BooksAdapter()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? = inflater.inflate(R.layout.fragment_book_list, container, false)
+    ): View {
+        _binding = FragmentBookListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(
         view: View,
@@ -36,8 +43,15 @@ class BookListFragment : Fragment() {
             .bookListComponent()
             .inject(this)
 
+        binding.bookList.adapter = adapter
+        binding.bookList.layoutManager = LinearLayoutManager(requireContext())
         renderBooks()
         bookListPresenter.fetchBooks()
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        bookListPresenter.cleanup()
     }
 
     private fun renderBooks() {
@@ -45,7 +59,7 @@ class BookListFragment : Fragment() {
             bookListPresenter.state.collectLatest {
                 when (it) {
                     is BookListState.Books -> {
-                        Log.e("Manu", it.items.toString())
+                        adapter.books = it.items
                     }
 
                     is BookListState.Error -> {

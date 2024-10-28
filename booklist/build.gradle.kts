@@ -30,6 +30,9 @@ android {
             )
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -43,10 +46,15 @@ dependencies {
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
+    implementation(libs.material)
+    implementation(libs.androidx.constraintlayout)
 
     // moshi
     implementation(libs.moshi)
-    kapt(libs.moshi.codegen)
+    kapt(libs.moshi.codegen) // ideally should use ksp but dagger support for ksp is really bad at this time. Prefer kotlin-inject or manual di and use ksp for this.
+
+    // glide
+    implementation(libs.glide)
 
     // retrofit
     implementation(libs.retrofit)
@@ -54,9 +62,10 @@ dependencies {
 
     // dagger
     implementation(libs.dagger)
+    kapt(libs.dagger.compiler)
+
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
-    kapt(libs.dagger.compiler)
 
     implementation(libs.material)
     testImplementation(libs.junit)
