@@ -18,7 +18,7 @@ subprojects {
         kotlin {
             target("**/*.kt")
             targetExclude("${layout.buildDirectory}/**/*.kt")
-            ktlint(ktlintVersion).setEditorConfigPath(rootProject.file(".editorconfig").path)
+            ktlint(ktlintVersion).setEditorConfigPath("${project.rootDir}/.editorconfig")
 //            ktlint(ktlintVersion)
             toggleOffOn() // Allow toggling Spotless off and on within code files using comments
             trimTrailingWhitespace()
