@@ -5,6 +5,8 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.ot.booklist.R
 import com.ot.booklist.databinding.ViewBookBinding
 
@@ -25,7 +27,8 @@ class BookView @JvmOverloads constructor(
         binding.bookDescription.text = uiBook.description
         binding.bookImage.contentDescription =
             context.resources.getString(R.string.content_description_book_image, uiBook.title)
-        Glide.with(this).load(uiBook.image).into(binding.bookImage)
+        val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+        Glide.with(this).load(uiBook.image).apply(requestOptions).into(binding.bookImage)
 
     }
 }

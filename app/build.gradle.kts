@@ -77,6 +77,10 @@ dependencies {
     // glide
     implementation(libs.glide)
 
+    // window
+    implementation(libs.androidx.window)
+    implementation(libs.windowsize)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

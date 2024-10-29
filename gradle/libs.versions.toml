@@ -19,6 +19,8 @@ spotless = "6.25.0"
 navigationFragmentKtx = "2.8.3"
 navigationUiKtx = "2.8.3"
 moshi = "1.15.1"
+window = "1.3.0"
+windowSizeClass = "1.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -39,6 +41,8 @@ androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navi
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
 moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
 moshi-codegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+androidx-window = { group = "androidx.window", name = "window", version.ref = "window" }
+windowsize = { group = "androidx.compose.material3", name = "material3-window-size-class", version.ref = "windowSizeClass" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
