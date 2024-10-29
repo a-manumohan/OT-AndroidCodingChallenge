@@ -4,4 +4,5 @@
     <string name="error_generic">Something went wrong. Be assured, we will be right back!</string>
 
     <string name="content_description_book_image">Image of book titled, %s</string>
+    <string name="title_books">Books</string>
 </resources>

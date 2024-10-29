@@ -18,15 +18,12 @@ interface BookListModule {
 
     companion object {
         @Provides
-        fun retrofit(
-            @BaseUrl baseUrl: String,
-        ): Retrofit =
-            Retrofit
-                .Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(
-                    MoshiConverterFactory.create(),
-                ).build()
+        fun retrofit(@BaseUrl baseUrl: String): Retrofit = Retrofit
+            .Builder()
+            .baseUrl(baseUrl)
+            .addConverterFactory(
+                MoshiConverterFactory.create(),
+            ).build()
 
         @Provides
         fun bookListApi(retrofit: Retrofit): BookListApi = retrofit.create()

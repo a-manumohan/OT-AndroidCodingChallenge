@@ -25,19 +25,12 @@ class BookListFragment : Fragment() {
 
     private val adapter = BooksAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentBookListBinding.inflate(inflater, container, false)
         return binding?.root!!
     }
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?,
-    ) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (view.context.applicationContext as BookListComponentProvider)
             .bookListComponent()
@@ -67,16 +60,28 @@ class BookListFragment : Fragment() {
             bookListPresenter.state.collectLatest {
                 when (it) {
                     is BookListState.Books -> {
+                        showLoading(false)
                         adapter.books = it.items
                     }
 
                     is BookListState.Error -> {
+                        showLoading(false)
                     }
 
                     BookListState.Loading -> {
+                        showLoading(true)
                     }
                 }
             }
+        }
+    }
+
+    private fun showLoading(show: Boolean) {
+        val binding = this.binding
+        requireNotNull(binding)
+        binding.loading.visibility = when (show) {
+            true -> View.VISIBLE
+            false -> View.GONE
         }
     }
 }

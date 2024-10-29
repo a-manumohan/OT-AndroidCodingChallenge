@@ -12,10 +12,7 @@ class BooksAdapter : RecyclerView.Adapter<BookViewHolder>() {
             notifyDataSetChanged()
         }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int,
-    ): BookViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
         val bookView =
             BookView(parent.context)
         bookView.layoutParams =
@@ -28,17 +25,12 @@ class BooksAdapter : RecyclerView.Adapter<BookViewHolder>() {
 
     override fun getItemCount(): Int = books.size
 
-    override fun onBindViewHolder(
-        holder: BookViewHolder,
-        position: Int,
-    ) {
+    override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
         holder.bind(books[position])
     }
 }
 
-class BookViewHolder(
-    private val view: BookView,
-) : RecyclerView.ViewHolder(view) {
+class BookViewHolder(private val view: BookView) : RecyclerView.ViewHolder(view) {
     fun bind(uiBook: UiBook) {
         view.bind(uiBook)
     }
