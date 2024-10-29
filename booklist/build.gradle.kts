@@ -51,7 +51,10 @@ dependencies {
 
     // moshi
     implementation(libs.moshi)
-    kapt(libs.moshi.codegen) // ideally should use ksp but dagger support for ksp is really bad at this time. Prefer kotlin-inject or manual di and use ksp for this.
+
+    /* ideally should use ksp but dagger support for ksp is really bad at this time.
+    Prefer kotlin-inject or manual di and use ksp for this.*/
+    kapt(libs.moshi.codegen)
 
     // glide
     implementation(libs.glide)

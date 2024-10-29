@@ -21,19 +21,17 @@ class BookListFragment : Fragment() {
     @Inject
     lateinit var bookListPresenter: BookListPresenter
 
-    private var _binding: FragmentBookListBinding? = null
-    private val binding get() = _binding!!
+    private var binding: FragmentBookListBinding? = null
 
     private val adapter = BooksAdapter()
-
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentBookListBinding.inflate(inflater, container, false)
-        return binding.root
+        binding = FragmentBookListBinding.inflate(inflater, container, false)
+        return binding?.root!!
     }
 
     override fun onViewCreated(
@@ -45,13 +43,16 @@ class BookListFragment : Fragment() {
             .bookListComponent()
             .inject(this)
 
+        val binding = this.binding
+        requireNotNull(binding)
         binding.bookList.adapter = adapter
         val widthWindowSizeClass = (activity as DynamicWindow).getWidthSizeClass()
-        binding.bookList.layoutManager = when (widthWindowSizeClass) {
-            WindowWidthSizeClass.Medium -> GridLayoutManager(requireContext(), 2)
-            WindowWidthSizeClass.Expanded -> GridLayoutManager(requireContext(), 3)
-            else -> LinearLayoutManager(requireContext())
-        }
+        binding.bookList.layoutManager =
+            when (widthWindowSizeClass) {
+                WindowWidthSizeClass.Medium -> GridLayoutManager(requireContext(), 2)
+                WindowWidthSizeClass.Expanded -> GridLayoutManager(requireContext(), 3)
+                else -> LinearLayoutManager(requireContext())
+            }
         renderBooks()
         bookListPresenter.fetchBooks()
     }
@@ -60,7 +61,6 @@ class BookListFragment : Fragment() {
         super.onDetach()
         bookListPresenter.cleanup()
     }
-
 
     private fun renderBooks() {
         lifecycleScope.launch {
