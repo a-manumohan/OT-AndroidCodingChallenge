@@ -8,7 +8,7 @@ sealed interface StringResource {
     data class Text(val text: String) : StringResource
 }
 
-fun Context.getString(resource: StringResource): String = when (resource) {
-    is StringResource.Id -> this.getString(resource.id)
-    is StringResource.Text -> resource.text
+fun StringResource.getString(context: Context): String = when (this) {
+    is StringResource.Id -> context.getString(this.id)
+    is StringResource.Text -> this.text
 }

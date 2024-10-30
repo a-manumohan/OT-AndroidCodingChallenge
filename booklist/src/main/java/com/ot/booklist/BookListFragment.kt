@@ -13,6 +13,7 @@ import com.ot.booklist.databinding.FragmentBookListBinding
 import com.ot.booklist.di.BookListComponentProvider
 import com.ot.booklist.ui.BooksAdapter
 import com.ot.core.DynamicWindow
+import com.ot.core.getString
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -60,16 +61,19 @@ class BookListFragment : Fragment() {
             bookListPresenter.state.collectLatest {
                 when (it) {
                     is BookListState.Books -> {
-                        showLoading(false)
+                        showLoading(show = false)
+                        showError(show = false)
                         adapter.books = it.items
                     }
 
                     is BookListState.Error -> {
                         showLoading(false)
+                        showError(show = true, message = it.message.getString(requireContext()))
                     }
 
                     BookListState.Loading -> {
                         showLoading(true)
+                        showError(false)
                     }
                 }
             }
@@ -79,9 +83,18 @@ class BookListFragment : Fragment() {
     private fun showLoading(show: Boolean) {
         val binding = this.binding
         requireNotNull(binding)
-        binding.loading.visibility = when (show) {
-            true -> View.VISIBLE
-            false -> View.GONE
-        }
+        binding.loading.visibility = show.visibility()
+    }
+
+    private fun showError(show: Boolean, message: String = "") {
+        val binding = this.binding
+        requireNotNull(binding)
+        binding.errorView.visibility = show.visibility()
+        binding.errorView.bind(message)
+    }
+
+    private fun Boolean.visibility() = when (this) {
+        true -> View.VISIBLE
+        false -> View.GONE
     }
 }

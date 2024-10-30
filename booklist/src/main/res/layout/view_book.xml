@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/padding_normal"
             android:textSize="@dimen/text_medium"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/bookImage"
             app:layout_constraintTop_toTopOf="@id/bookImage"
