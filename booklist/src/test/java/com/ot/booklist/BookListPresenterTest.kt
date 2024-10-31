@@ -23,7 +23,7 @@ class BookListPresenterTest {
     private val testDispatcher = StandardTestDispatcher()
     private val dispatchers = AppDispatchers(
         work = testDispatcher,
-        result = testDispatcher
+        result = testDispatcher,
     )
 
     private lateinit var presenter: BookListPresenter
@@ -47,7 +47,7 @@ class BookListPresenterTest {
         presenter.fetchBooks()
 
         presenter.state.test {
-            //expect loading
+            // expect loading
             assertTrue(awaitItem() is BookListState.Loading)
 
             val item = awaitItem()
@@ -64,7 +64,7 @@ class BookListPresenterTest {
         presenter.fetchBooks()
 
         presenter.state.test {
-            //expect loading
+            // expect loading
             assertTrue(awaitItem() is BookListState.Loading)
 
             val item = awaitItem()
@@ -77,12 +77,13 @@ class BookListPresenterTest {
             isbn = "1234",
             title = "fake title",
             description = "fake description",
-            image = "fake-image-url"
-        ), Book(
+            image = "fake-image-url",
+        ),
+        Book(
             isbn = "1234",
             title = "fake title",
             description = "fake description",
-            image = "fake-image-url"
-        )
+            image = "fake-image-url",
+        ),
     )
 }

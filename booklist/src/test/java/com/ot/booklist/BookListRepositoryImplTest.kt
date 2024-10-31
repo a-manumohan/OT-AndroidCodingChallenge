@@ -12,9 +12,9 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
 import org.junit.jupiter.api.AfterEach
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.BeforeEach
-
 import org.junit.jupiter.api.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -62,14 +62,15 @@ class BookListRepositoryImplTest {
                     isbn = "fake isbn",
                     title = "fake title",
                     description = "fake desc",
-                    image = "fake image url"
-                ), Book(
+                    image = "fake image url",
+                ),
+                Book(
                     isbn = "fake isbn",
                     title = "fake title",
                     description = "fake desc",
-                    image = "fake image url"
-                )
-            )
-        )
+                    image = "fake image url",
+                ),
+            ),
+        ),
     )
 }
