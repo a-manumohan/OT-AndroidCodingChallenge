@@ -30,16 +30,19 @@ constructor(
 
     fun fetchBooks() {
         launch {
+            withContext(appDispatchers.result) {
+                _state.emit(BookListState.Loading)
+            }
             val bookResult = bookLinkRepository.fetchBooks(0)
             if (bookResult.isSuccess) {
                 val uiBooks = bookResult.getOrElse { emptyList() }.map { toUiBook(it) }
                 withContext(appDispatchers.result) {
-                    _state.tryEmit(BookListState.Books(uiBooks))
+                    _state.emit(BookListState.Books(uiBooks))
                 }
             } else {
                 val error = bookResult.exceptionOrNull()
                 withContext(appDispatchers.result) {
-                    _state.tryEmit(mapError(error))
+                    _state.emit(mapError(error))
                 }
             }
         }

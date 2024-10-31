@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.jvm) apply false
     alias(libs.plugins.android.library) apply false
     alias(libs.plugins.spotless) apply false
+    alias(libs.plugins.junit.plugin) apply false
 }
 subprojects {
     apply {
