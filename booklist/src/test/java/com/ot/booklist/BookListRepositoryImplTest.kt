@@ -2,7 +2,7 @@ package com.ot.booklist
 
 import com.ot.booklist.api.Book
 import com.ot.booklist.api.BookListApi
-import com.ot.booklist.api.BookResponse
+import com.ot.booklist.api.BookListResponse
 import io.mockk.clearAllMocks
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -55,8 +55,8 @@ class BookListRepositoryImplTest {
         assertEquals(reason, bookResult.exceptionOrNull()?.message)
     }
 
-    private val dummyBookResponse = BookResponse(
-        results = BookResponse.Results(
+    private val dummyBookResponse = BookListResponse(
+        results = BookListResponse.Results(
             books = listOf(
                 Book(
                     isbn = "fake isbn",
